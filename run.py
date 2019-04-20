@@ -39,11 +39,14 @@ def _init_weight_vectors(input_vector_size):
 
 def _get_neighborhood_indices(weight_vectors, winner_index):
     neighborhood_indices = [winner_index]
-    # TODO ring
     if winner_index > 0:
         neighborhood_indices.append(winner_index - 1)
+    else:
+        neighborhood_indices.append(len(weight_vectors) - 1)
     if winner_index < len(weight_vectors) - 1:
         neighborhood_indices.append(winner_index + 1)
+    else:
+        neighborhood_indices.append(0)
     return neighborhood_indices
 
 
